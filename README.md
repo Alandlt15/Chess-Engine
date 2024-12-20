@@ -32,3 +32,5 @@ Utility.java:
 - [ ] CPU vs. Player
 - [ ] GUI with JavaFX
 - [ ] Other GUI settings
+
+December 2024
