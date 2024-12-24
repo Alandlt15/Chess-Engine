@@ -1,7 +1,7 @@
 # Java Chess Engine
 
 ### Project Overview:
-This engine heavily utilizes object oriented design patterns and principles. It breaks down most of the main tasks needed for the chess game to work into significantly smaller ones. Currently, the game runs on a player vs. player game mode with a future CPU vs. player implementation in the future.
+This engine heavily utilizes object oriented design patterns and principles. It breaks down most of the main tasks needed for the chess game to work into significantly smaller ones. Currently, the game runs on a player vs. player game mode with a future CPU vs. player implementation.
 
 ### Structure:
 Board.java:
