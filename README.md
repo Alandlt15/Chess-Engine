@@ -19,7 +19,7 @@ DetectErrors.java:
 - returns the type of error encountered
 
 GameMode.java:
-- hold game move information
+- holds game mode information
 - toggles turns 
 
 HandleBoardActivity.java:
