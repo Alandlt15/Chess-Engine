@@ -2,6 +2,7 @@ package Utility;
 import Position.Position;
 import DetectErrors.DetectErrors;
 import HandleBoardActivity.HandleBoardActivity;
+import MoveHistory.MoveHistory;
 import Pieces.*;
 import java.util.HashMap;
 
@@ -9,11 +10,13 @@ import java.util.HashMap;
 public class Utility {
     private String errorType;
     private Boolean checkmate;
+    private MoveHistory moves;
     private HandleBoardActivity activity;
 
     public Utility() {
         this.errorType = "";
         this.checkmate = false;
+        this.moves = new MoveHistory();
         this.activity = new HandleBoardActivity();
     }
     public String getErrorType() {
@@ -68,7 +71,7 @@ public class Utility {
         Position from = processFromPosition(move);
         Position to = processToPosition(move);
         //update board
-        setCheckmateStatus(activity.performActivity(pieceMatrix, move, from, to));
+        setCheckmateStatus(activity.performActivity(pieceMatrix, move, from, to, moves));
     }
     private int processRow(char row) {
         HashMap<Character, Integer> hashymappy = new HashMap<>();

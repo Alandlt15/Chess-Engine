@@ -5,10 +5,9 @@ import Pieces.*;
 
 public class HandleBoardActivity {
     //class keeps track of moves for each player might move to board class
-    private MoveHistory history;
 
     public HandleBoardActivity() {
-        this.history = new MoveHistory();
+    
     }
     // all should check for king's check
     private void move() {
@@ -24,7 +23,7 @@ public class HandleBoardActivity {
 
     }
     // should return true if checkmate found
-    public boolean performActivity(Pieces[][] pieceMatrix, String move, Position from, Position to) {
+    public boolean performActivity(Pieces[][] pieceMatrix, String move, Position from, Position to, MoveHistory moves) {
 
     }
 }
