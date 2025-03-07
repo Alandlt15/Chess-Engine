@@ -2,9 +2,12 @@ package Board;
 import Utility.Utility;
 import Position.Position;
 import Pieces.*;
-
 import java.util.Scanner;
 
+/*
+ * This executes to get user input (move)
+ * and displays the state of the board.
+ */
 public class Board {
     //use methods from Utility class
     private Utility utils = new Utility();
@@ -45,6 +48,7 @@ public class Board {
             pieceMatrix[6][i] = new Pawn("White", new Position(6, i));
         }
     }
+
     public boolean makeMove(String currentTurn) {
         Scanner scnr = new Scanner(System.in);
         Boolean validMove = false;
@@ -53,9 +57,10 @@ public class Board {
         System.out.println(currentTurn + " enter a move: (eg. E4 E5)");
         do {
             move = scnr.nextLine();
-            validMove = utils.checkMove(pieceMatrix, currentTurn, move);// returns boolean and sets a variable "error" to whatever error if one found
+            // sets a variable "error" to whatever error if one found
+            validMove = utils.checkMove(pieceMatrix, currentTurn, move);
             if (!validMove) {
-                String errorType = utils.getErrorType();// returns error as a string 
+                String errorType = utils.getErrorType();
                 switch (errorType) {
                     case "BI":// bad input
                         System.out.println("ERROR: Incorrect input!");
@@ -84,9 +89,10 @@ public class Board {
         } while (!validMove);
         scnr.close();
         
-        utils.updateBoard(pieceMatrix, move);// executes move on the board, updates captured pieces, and sets a variable "checkmate" to true or false after moving a piece
+        // executes move on the board, updates captured pieces, and sets a variable "checkmate" to true or false after moving a piece
+        utils.updateBoard(pieceMatrix, move);
 
-        if (utils.getCheckmateStatus())// returns boolean
+        if (utils.getCheckmateStatus())
             return true;
         else   
             return false;
