@@ -19,6 +19,7 @@ public abstract class Pieces {
     public void setPosition(Position newPosition) {
         this.position = newPosition;
     }
+    public abstract String getType();
     public abstract void displayPiece();
     public abstract void possibleMoves(Pieces[][] pieceMatrix, ArrayList<Position> moves);
 }

@@ -22,6 +22,10 @@ public class King extends Pieces {
             System.out.print("bK ");
     }
     @Override
+    public String getType() {
+        return "King";
+    }
+    @Override
     public void possibleMoves(Pieces[][] pieceMatrix, ArrayList<Position> moves) {
         // when king is in edge
 

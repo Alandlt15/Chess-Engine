@@ -19,7 +19,7 @@ public class DetectErrors {
         return false;
     }
 
-    // no such piece found
+    // no piece found
     public Boolean detectNoPieceFound(Pieces[][] pieceMatrix, Position from) {
         if (pieceMatrix[from.getRow()][from.getColumn()] == null)
             return true;
@@ -64,7 +64,40 @@ public class DetectErrors {
 
     // still in check
     // find a way to pre make the move since here it hasn't made the move yet, resulting in infinite check 
-    public Boolean detectStillInCheck(Pieces[][] pieceMatrix, Position to) {
+    public Boolean detectStillInCheck(Pieces[][] pieceMatrix, String currentTurn, Position from, Position to) {
+        Pieces[][] tempMatrix = new Pieces[8][8];
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                pieceMatrix[i][j] = pieceMatrix[i][j];
+            }
+        }
 
+        tempMatrix[to.getRow()][to.getColumn()] = tempMatrix[from.getRow()][from.getColumn()];
+        tempMatrix[from.getRow()][from.getColumn()] = null;
+
+        Position kingPosition = null;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (tempMatrix[i][j] != null && tempMatrix[i][j].getColor().equals(currentTurn) && tempMatrix[i][j].getType().equals("King")) {
+                    kingPosition = new Position(i, j);
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (tempMatrix[i][j] != null && !tempMatrix[i][j].getColor().equals(currentTurn)) {
+                    ArrayList<Position> opponentMoves = new ArrayList<>();
+                    tempMatrix[i][j].possibleMoves(tempMatrix, opponentMoves);
+                    for (Position move : opponentMoves) {
+                        if (move.equals(kingPosition)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

@@ -30,6 +30,10 @@ public class Pawn extends Pieces {
             System.out.print("bP ");
     }
     @Override
+    public String getType() {
+        return "Pawn";
+    }
+    @Override
     public void possibleMoves(Pieces[][] pieceMatrix, ArrayList<Position> moves) {
         int rowDirection = getColor().equals("White") ? -1 : 1;
 

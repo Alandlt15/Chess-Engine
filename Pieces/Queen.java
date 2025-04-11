@@ -14,6 +14,10 @@ public class Queen extends Pieces {
             System.out.print("bQ ");
     }
     @Override
+    public String getType() {
+        return "Queen";
+    }
+    @Override
     public void possibleMoves(Pieces[][] pieceMatrix, ArrayList<Position> moves) {
         // when queen is in the edge
 

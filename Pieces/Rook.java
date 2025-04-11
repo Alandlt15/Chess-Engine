@@ -14,6 +14,10 @@ public class Rook extends Pieces {
             System.out.print("bR ");
     }
     @Override
+    public String getType() {
+        return "Rook";
+    }
+    @Override
     public void possibleMoves(Pieces[][] pieceMatrix, ArrayList<Position> moves) {
         // when rook is in the edge
 

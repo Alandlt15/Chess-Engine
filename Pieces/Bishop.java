@@ -14,6 +14,10 @@ public class Bishop extends Pieces {
             System.out.print("bB ");
     }
     @Override
+    public String getType() {
+        return "Bishop";
+    }
+    @Override
     public void possibleMoves(Pieces[][] pieceMatrix, ArrayList<Position> moves) {
         // when bishop is in edge
 
