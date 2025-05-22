@@ -3,7 +3,7 @@ import Position.Position;
 import java.util.ArrayList;
 
 public abstract class Pieces {
-    private String color;
+    private String color = null;
     private Position position;
 
     public Pieces (String color, Position position) {

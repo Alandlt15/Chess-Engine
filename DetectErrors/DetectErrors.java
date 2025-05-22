@@ -44,6 +44,7 @@ public class DetectErrors {
     public Boolean detectMovementViolation(Pieces[][] pieceMatrix, Position from, Position to) {
         ArrayList<Position> moves = new ArrayList<>();
         pieceMatrix[from.getRow()][from.getColumn()].possibleMoves(pieceMatrix, moves);
+
         if (moves.size() == 0)
             return true;
         else {
@@ -57,9 +58,17 @@ public class DetectErrors {
 
     // friendly piece block
     public Boolean detectFriendlyPiece(Pieces[][] pieceMatrix, String currentTurn, Position to) {
-        if (pieceMatrix[to.getRow()][to.getColumn()].getColor().equals(currentTurn))
-            return true;
-        return false;
+        // Check for empty spot first
+        if (pieceMatrix[to.getRow()][to.getColumn()] == null) 
+            return false;
+        
+        String move_to_color = pieceMatrix[to.getRow()][to.getColumn()].getColor();
+
+        // opposite piece 
+        if (!move_to_color.equals(currentTurn)) 
+            return false;
+
+        return true;
     }
 
     // still in check
@@ -68,7 +77,7 @@ public class DetectErrors {
         Pieces[][] tempMatrix = new Pieces[8][8];
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                pieceMatrix[i][j] = pieceMatrix[i][j];
+                tempMatrix[i][j] = pieceMatrix[i][j];
             }
         }
 

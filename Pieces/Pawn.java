@@ -37,7 +37,7 @@ public class Pawn extends Pieces {
     public void possibleMoves(Pieces[][] pieceMatrix, ArrayList<Position> moves) {
         int rowDirection = getColor().equals("White") ? -1 : 1;
 
-        // when a pawn is at the end of column change this to handle pawn promotion using a dedicated class to handle this behaviour
+        // when a pawn is at the end of column change this to handle pawn promotion using a dedicated class to handle this behavior
         if (getPosition().getRow() + rowDirection == 0 || getPosition().getRow() + rowDirection == 7) {
             Position newMove = new Position(getPosition().getRow() + rowDirection, getPosition().getColumn());
             moves.add(newMove);

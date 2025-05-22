@@ -15,7 +15,11 @@ public class Board {
     //holds all pieces 
     private Pieces[][] pieceMatrix = new Pieces[8][8];
 
+    //input
+    private Scanner scanner;
+
     public Board () {
+        this.scanner = new Scanner(System.in);
         // Place Rooks
         pieceMatrix[0][0] = new Rook("Black", new Position(0, 0));
         pieceMatrix[0][7] = new Rook("Black", new Position(0, 7));
@@ -50,13 +54,12 @@ public class Board {
     }
 
     public boolean makeMove(String currentTurn) {
-        Scanner scnr = new Scanner(System.in);
         Boolean validMove = false;
         String move = "";
 
-        System.out.println(currentTurn + " enter a move: (eg. E4 E5)");
+        System.out.println(currentTurn + " enter a move: (eg. E2 E4)");
         do {
-            move = scnr.nextLine();
+            move = scanner.nextLine();
             // sets a variable "error" to whatever error if one found
             validMove = utils.checkMove(pieceMatrix, currentTurn, move);
             if (!validMove) {
@@ -87,13 +90,14 @@ public class Board {
                 }
             }
         } while (!validMove);
-        scnr.close();
         
         // executes move on the board, updates captured pieces, and sets a variable "checkmate" to true or false after moving a piece
         utils.updateBoard(pieceMatrix, move);
 
-        if (utils.getCheckmateStatus())
+        if (utils.getCheckmateStatus()) {
+            scanner.close();
             return true;
+        }
         else   
             return false;
     }
@@ -115,5 +119,6 @@ public class Board {
             }
             System.out.println();
         }
+        System.out.println();
     }
 }

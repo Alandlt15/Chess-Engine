@@ -104,11 +104,13 @@ public class Utility {
     }
     private Position processToPosition(String move) {
         String[] parts = move.split(" ");
+        System.out.println(parts[1].charAt(0));
         char toColumn = parts[1].charAt(0);
-        int toRow = 8 - Integer.parseInt(parts[0].substring(1));
+        int toRow = 8 - Integer.parseInt(parts[1].substring(1));
         Position to = new Position(toRow, processRow(toColumn));
 
-        System.out.println(to.getRow() + " " + to.getColumn());
+        System.out.println(Integer.parseInt(parts[0].substring(1)));
+        //System.out.println(to.getRow() + " " + to.getColumn());
         return to;
     }
 }
