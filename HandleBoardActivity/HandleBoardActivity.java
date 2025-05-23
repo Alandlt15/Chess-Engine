@@ -20,15 +20,22 @@ public class HandleBoardActivity {
         this.moves = new MoveHistory();
     }
     
+    //move piece if to is empty
     private boolean move() {
         return checkCheckmate();
     }
+
+    //move piece and capture piece
     private boolean moveAndCapture() {
         return checkCheckmate();
     }
+
+    //move pawn and upgrade 
     private boolean pawnPromotion() {
         return checkCheckmate();
     }
+
+    //swap king and rook
     private boolean castle() {
         return checkCheckmate();
     }
