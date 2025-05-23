@@ -35,10 +35,12 @@ public class HandleBoardActivity {
 
     //checks if king is trapped
     private boolean checkCheckmate() {
-
+        return false;
     }
     // should return true if checkmate found
     public boolean performActivity(Pieces[][] pieceMatrix, String move, Position from, Position to) {
-        
+        pieceMatrix[to.getRow()][to.getColumn()] = pieceMatrix[from.getRow()][from.getColumn()];
+        pieceMatrix[from.getRow()][from.getColumn()] = null;
+        return false;
     }
 }

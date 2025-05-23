@@ -63,7 +63,7 @@ public class Utility {
             setErrorType("FPB");// Friendly Piece Block
             return false;
         }
-        else if (findErrors.detectStillInCheck(pieceMatrix, to)) {
+        else if (findErrors.detectStillInCheck(pieceMatrix, currentTurn, from, to)) {
             setErrorType("SIC");// Still In Check
             return false;
         } 
@@ -78,7 +78,7 @@ public class Utility {
         setCheckmateStatus(activity.performActivity(pieceMatrix, move, from, to));
     }
 
-    private int processRow(char row) {
+    public int processRow(char row) {
         HashMap<Character, Integer> hashymappy = new HashMap<>();
         hashymappy.put('A', 0);
         hashymappy.put('B', 1);
@@ -95,18 +95,22 @@ public class Utility {
         else 
             return -1;
     }
-    private Position processFromPosition(String move) {
+    public Position processFromPosition(String move) {
         String[] parts = move.split(" ");
-        char fromRow = parts[0].charAt(0);
-        int fromColumn = 8 - Integer.parseInt(parts[0].substring(1));
-        Position from = new Position(processRow(fromRow), fromColumn);
+        char fromColumn = parts[0].charAt(0);
+        int fromRow = 8 - Integer.parseInt(parts[0].substring(1));
+        Position from = new Position(fromRow , processRow(fromColumn));
         return from;
     }
     private Position processToPosition(String move) {
         String[] parts = move.split(" ");
-        char toRow = parts[0].charAt(4);
-        int toColumn = 8 - Integer.parseInt(parts[0].substring(1));
-        Position to = new Position(processRow(toRow), toColumn);
+        System.out.println(parts[1].charAt(0));
+        char toColumn = parts[1].charAt(0);
+        int toRow = 8 - Integer.parseInt(parts[1].substring(1));
+        Position to = new Position(toRow, processRow(toColumn));
+
+        System.out.println(Integer.parseInt(parts[0].substring(1)));
+        //System.out.println(to.getRow() + " " + to.getColumn());
         return to;
     }
 }

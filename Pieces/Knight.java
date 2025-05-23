@@ -14,6 +14,10 @@ public class Knight extends Pieces {
             System.out.print("bN ");
     }
     @Override
+    public String getType() {
+        return "Knight";
+    }
+    @Override
     public void possibleMoves(Pieces[][] pieceMatrix, ArrayList<Position> moves) {
         // 
     }
