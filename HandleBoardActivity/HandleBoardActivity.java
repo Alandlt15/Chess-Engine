@@ -46,6 +46,10 @@ public class HandleBoardActivity {
     }
     // should return true if checkmate found
     public boolean performActivity(Pieces[][] pieceMatrix, String move, Position from, Position to) {
+        if (pieceMatrix[to.getRow()][to.getColumn()] != null)
+            return moveAndCapture();
+        else 
+            return move();
         pieceMatrix[to.getRow()][to.getColumn()] = pieceMatrix[from.getRow()][from.getColumn()];
         pieceMatrix[from.getRow()][from.getColumn()] = null;
         return false;
